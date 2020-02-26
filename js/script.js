@@ -22,8 +22,8 @@ if(clickedElement !== activeLink) activeLink.classList.remove('active');
     console.log('clickedElement:', clickedElement);
 
   /* [DONE]remove class 'active' from all articles */
-    const activeArticles = document.querySelectorAll('.articles a.active');
-
+    const activeArticles = document.querySelectorAll('.posts article');
+   
     for(let activeArticle of activeArticles){
     activeLink.classList.remove('active');
     }
