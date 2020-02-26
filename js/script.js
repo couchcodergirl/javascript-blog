@@ -1,27 +1,34 @@
 const titleClickHandler = function(event){
-  console.log(event);/* czy to dobrze ten event?*/
-
-  /* remove class 'active' from all article links  */
+   const clickedElement = this;
+   console.log('clickedElement (with plus): ' + clickedElement);
+    
+  /* [DONE]remove class 'active' from all article links  */
    const activeLinks = document.querySelectorAll('.titles a.active');
 
 for(let activeLink of activeLinks){
   activeLink.classList.remove('active');
+    
+    /*for (let activeLink of activeLinks) {
+if(clickedElement !== activeLink) activeLink.classList.remove('active');
+
+//clickedElement.classList.toggle('active');*/
 }
 
-  /* add class 'active' to the clicked link */
+  /* [IN PROGESS]add class 'active' to the clicked link */
+    clickedElement.classList.add('active');
 
-  /* remove class 'active' from all articles */
-    const activeLinks = document.querySelectorAll('.articles a.active');
+  /* [DONE]remove class 'active' from all articles */
+    const activeArticles = document.querySelectorAll('.articles a.active');
 
     for(let activeArticle of activeArticles){
     activeLink.classList.remove('active');
     }
 
-  /* get 'href' attribute from the clicked link */
+  /* [IN PROGESS] get 'href' attribute from the clicked link */
 
-  /* find the correct article using the selector (value of 'href' attribute) */
+  /* [IN PROGESS] find the correct article using the selector (value of 'href' attribute) */
 
-  /* add class 'active' to the correct article */
+  /* [IN PROGESS] add class 'active' to the correct article */
 }
 
 const links = document.querySelectorAll('.titles a');
