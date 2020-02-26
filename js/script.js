@@ -1,6 +1,7 @@
 const titleClickHandler = function(event){
-   const clickedElement = this;
-   console.log('clickedElement (with plus): ' + clickedElement);
+    event.preventDefault();
+    const clickedElement = this;
+    console.log('clickedElement (with plus): ' + clickedElement);
     
   /* [DONE]remove class 'active' from all article links  */
    const activeLinks = document.querySelectorAll('.titles a.active');
@@ -36,4 +37,4 @@ const links = document.querySelectorAll('.titles a');
 for(let link of links){
   link.addEventListener('click', titleClickHandler);
 
-function(event); /*jak wywołać funkcję?*/
+titleClickHandler(); /*jak wywołać funkcję?*/
