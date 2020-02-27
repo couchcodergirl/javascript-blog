@@ -8,7 +8,7 @@
 body {
   background: #fff;
   font-family: "Source Sans Pro", sans-serif;
-  color: palevioletred;
+  color: #2c3e50;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
@@ -64,6 +64,8 @@ body {
   font-size: 104px;
   line-height: 1;
   text-align: center;
+  color: #82ccdd;
+  padding: 30px 0;
 }
 
 /* Lists */
