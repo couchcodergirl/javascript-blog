@@ -1,6 +1,11 @@
 
 const titleClickHandler = function(event) {
     event.preventDefault();
+    
+    const templates = {
+  articleLink: Handlebars.compile(
+    document.querySelector('#template-article-link').innerHTML
+  ),
 
     const clickedElement = this;
     console.log(clickedElement);
@@ -32,6 +37,7 @@ const titleClickHandler = function(event) {
 };
 
 const links = document.querySelectorAll('.titles a');
+console.log(links);
 
 for(const link of links) {
     link.addEventListener('click', titleClickHandler);
@@ -40,44 +46,48 @@ for(const link of links) {
 //TITLE LIST
 const opt = {
     articleSelector: '.post',
-    articleTagsSelector: '.post-tags .list',
-    articleAuthorSelector: '.post-author',
     titleSelector: '.post-title',
     titleListSelector: '.titles',
-    tagsListSelector: '.tags.list',
-    cloudClassCount: 5,
-    cloudClassPrefix: 'tag-size-',
-    authorsListSelector: '.authors.list'
   }
-//z kodilli
+/*
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles';
 
-function generateTitleLinks(){
 
   /* DONE remove contents of titleList */
   const titleList = document.querySelector(opt.titleListSelector);
 
     titleList.innerHTML = '';
-
-  /* for each article */
-  for (let article of articles) {
+    
+    let html = '';
+    
+  /* [DONE]for each article */
+    for (let article of articles) {
       /*[DONE] get the article id */
-  const articleId = article.getAttribute('id');
+      const articleId = article.getAttribute('id');
 
-    /* get the article id */
-  const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+        /* find the title element */
+      const articleTitle = article.querySelector(opt.titleSelector).innerHTML;
 
-    /* find the title element */
-  const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-  console.log(linkHTML)
-    /* get the title from the title element */
+       /*[DONE] create HTML of the link */
+      // const linkHTML = `<li><a href='#${articleId}'><span>${articleTitle}</span></a></li>`;
+      const linkHTMLData = { id: articleId, title: articleTitle };
+      const linkHTML = templates.articleLink(linkHTMLData);
 
-    /* create HTML of the link */
+    /* [DONE]insert link into titleList */
+     html = html + linkHTML;
+     console.log(html);
+     
+    const links = document.querySelectorAll('.titles a');
+    console.log(links);
 
-    /* insert link into titleList */
+    for(const link of links) {
+        link.addEventListener('click', titleClickHandler);
     }
+
+  }
+  titleList.innerHTML = html;
 }
 
 generateTitleLinks();
