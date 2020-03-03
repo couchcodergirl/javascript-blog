@@ -18,7 +18,6 @@ const templates = {
   ),
 };
 
-{
   const opt = {
     articleSelector: '.post',
     articleTagsSelector: '.post-tags .list',
@@ -30,7 +29,7 @@ const templates = {
     cloudClassPrefix: 'tag-size-',
     authorsListSelector: '.authors.list'
   };
-
+    
   const titleClickHandler = function(event) {
     event.preventDefault();
     const clickedElement = this;
@@ -99,3 +98,38 @@ const templates = {
     for (let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
+      
+  function generateTags() {      
+  /* find all articles */
+    const articles = document.querySelectorAll(opt.articleSelector);
+
+  /* START LOOP: for every article: */
+    for (let article of articles) {
+
+    /* find tags wrapper */
+    const tagsWrapper = article.querySelector(opt.articleTagsSelector);
+
+    /* make html variable with empty string */
+    let html = '';
+
+    /* get tags from data-tags attribute */
+    const articleTags = article.getAttribute('data-tags');
+        
+    /* split tags into array */
+    const articleTagsArray = articleTags.split(' ');
+    /* START LOOP: for each tag */
+    for(let tag of articleTagsArray){     
+    /* generate HTML of the link */
+     
+    
+
+      /* add generated code to html variable */
+
+    /* END LOOP: for each tag */
+    }
+    /* insert HTML of all the links into the tags wrapper */
+
+  /* END LOOP: for every article: */
+  }
+}
+generateTags();
