@@ -34,14 +34,14 @@
     event.preventDefault();
     const clickedElement = this;
 
-    /* [DONE] remove class 'active' from all article links  */
+    /* remove class 'active' from all article links  */
     const activeLinks = document.querySelectorAll('.titles a.active');
 
     for (let activeLink of activeLinks) {
       if (clickedElement !== activeLink) activeLink.classList.remove('active');
     }
 
-    /* [DONE] add class 'active' to the clicked link */
+    /* add class 'active' to the clicked link */
     clickedElement.classList.toggle('active');
 
     /* [DONE] get 'href' attribute from the clicked link */
@@ -63,7 +63,7 @@
   function generateTitleLinks(customSelector = '') {
       const articles = document.querySelectorAll(optArticleSelector + customSelector);
       opt.articleSelector + customSelector
-    );
+  };
     let html = '';
 
     /*[DONE] Remove contents of titleList */
@@ -98,7 +98,7 @@
     for (let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
-  }
+  
   function generateTags() {      
   /* find all articles */
     const articles = document.querySelectorAll(opt.articleSelector);
