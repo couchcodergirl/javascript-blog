@@ -45,6 +45,8 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post .post-author';
+  
+const optTagsListSelector = '.tags.list';
 
 function generateTitleLinks(customSelector = ''){
 
@@ -97,6 +99,9 @@ generateTitleLinks();
 
 //GENERATE TAGS
 function generateTags(){
+  /* [NEW] create a new variable allTags with an empty array */
+  let allTags = [];
+    
   /* find all articles */
 
   const articles = document.querySelectorAll(optArticleSelector);
@@ -139,6 +144,13 @@ function generateTags(){
 
       html = html + linkHTML;
       console.log(html);
+        
+      /* [NEW] check if this link is NOT already in allTags */
+      if(allTags.indexOf(linkHTML) == -1){
+          
+      /* [NEW] add generated code to allTags array */
+        allTags.push(linkHTML);
+        }
 
       /* END LOOP: for each tag */
     }
@@ -148,6 +160,13 @@ function generateTags(){
     tagsWrapper.insertAdjacentHTML('beforeend', html);
 
     /* END LOOP: for every article: */
+    }
+    
+    /* [NEW] find list of tags in right column */
+    const tagList = document.querySelector('.tags');
+
+    /* [NEW] add html from allTags to tagList */
+    tagList.innerHTML = allTags.join(' ');
 
   }
 
@@ -156,10 +175,11 @@ function generateTags(){
   for(let tag of tags){
     tag.addEventListener('click', tagClickHandler);
   }
-}
+
 
 generateTags();
 
+//TAG CLICK HANDLER
 function tagClickHandler(event){
 
   /* prevent default action for this event */
@@ -239,6 +259,7 @@ function addClickListenersToTags(){
 
 addClickListenersToTags();
 
+//GENERATE AUTHORS
 function generateAuthors(){
 
   /* find all articles */
@@ -291,6 +312,8 @@ function generateAuthors(){
 
 generateAuthors();
 
+
+//AUTHOR CLICK HANDLER
 function authorClickHandler(event){
 
   /* prevent default action for this event */
