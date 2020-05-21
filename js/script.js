@@ -44,17 +44,11 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post .post-author',
-  optTagsListSelector = '.tags.list',
-  optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-',
+  optArticleAuthorSelector = '.post .post-author';
   
+const optTagsListSelector = '.tags.list';
 
-  function generateTitleLinks(customSelector = '') {
-      const articles = document.querySelectorAll(
-      optArticleSelector + customSelector
-      );
-      let html = '';
+function generateTitleLinks(customSelector = ''){
 
   /* remove contents of titleList */
 
@@ -115,22 +109,15 @@ function calculateTagsParams(tags) {
       max: 0,
       min: 999999
     };
-
-    for (let tag in tags) {
+    for(let tag in tags){
       params.max = Math.max(tags[tag], params.max);
       params.min = Math.min(tags[tag], params.min);
     }
     return params;
-    console.log(params);
   }
 
-
 //GENERATE TAGS
-function calculateTagClass(count, params){}
-
 function generateTags(){
-  const tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
-  console.log('tagLinkHTML:', tagLinkHTML);
     
   /* [NEW] create a new variable allTags with an empty array */
   let allTags = {};
@@ -161,13 +148,12 @@ function generateTags(){
 
     /* split tags into array */
 
-    const articleTagsArray = articleTags.split(' ');
+    const articleTagsArray = articleTags.split('  ');
     console.log(articleTagsArray);
 
     /* START LOOP: for each tag */
 
     for(let tag of articleTagsArray){
-
 
       /* generate HTML of the link */
 
