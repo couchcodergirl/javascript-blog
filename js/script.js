@@ -44,11 +44,17 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post .post-author';
+  optArticleAuthorSelector = '.post .post-author',
+  optTagsListSelector = '.tags.list',
+  optCloudClassCount = 5,
+  optCloudClassPrefix = 'tag-size-',
   
-const optTagsListSelector = '.tags.list';
 
-function generateTitleLinks(customSelector = ''){
+  function generateTitleLinks(customSelector = '') {
+      const articles = document.querySelectorAll(
+      optArticleSelector + customSelector
+      );
+      let html = '';
 
   /* remove contents of titleList */
 
@@ -120,7 +126,11 @@ function calculateTagsParams(tags) {
 
 
 //GENERATE TAGS
+function calculateTagClass(count, params){}
+
 function generateTags(){
+  const tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
+  console.log('tagLinkHTML:', tagLinkHTML);
     
   /* [NEW] create a new variable allTags with an empty array */
   let allTags = {};
